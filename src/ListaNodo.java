@@ -5,6 +5,8 @@ public class ListaNodo {
     private Nodo cabeza,anterior;
     int h;
 
+
+
     public ListaNodo(){
         cabeza = null;
         h=0;
@@ -44,23 +46,79 @@ public class ListaNodo {
         h++;
 
     }
+    // vista sencilla
+    public void viewEasy(){
+        Nodo aux = cabeza;
+        String mensaje = "";
+        do{
+            mensaje += ("\nDATO: "+aux.getDato() + " y dato siguiente es " + aux.getLigaN().getDato());
+            aux = aux.getLigaN();
+        }while(aux != cabeza);
+        JOptionPane.showMessageDialog(null,mensaje);
+    }
+
+    public void unirListas(ListaNodo lista2){
+        Nodo aux = cabeza;
+        Nodo aux2 = lista2.cabeza;
+
+        do{
+            Nodo nuevo = new Nodo();
+            nuevo.setDato(aux2.getDato());
+            agregarN(nuevo);
+            aux2 = aux2.getLigaN();
+            aux = aux.getLigaN();
+
+        }while(aux2 != lista2.cabeza);
+
+    }
+
+    public void invertirLista(){
+        Nodo aux = cabeza.getLigaB();
+        ListaNodo listaInvertida = new ListaNodo();
+
+        do{
+            Nodo nuevo = new Nodo();
+            nuevo.setDato(aux.getDato());
+            listaInvertida.agregarN(nuevo);
+
+            aux = aux.getLigaB();
+
+        }while(aux != cabeza.getLigaB());
+        listaInvertida.viewEasy();
+    }
+
+
+
 
     public void recorrerNext(){
         Nodo aux = cabeza;
+        String mensaje = "";
         do{
-            JOptionPane.showMessageDialog(null," DATO ANTERIOR: "+
+            //ver uno a uno
+//            JOptionPane.showMessageDialog(null," DATO ANTERIOR: "+
+//                    aux.getLigaB().getDato() + " DATO: "+aux.getDato() + " y dato siguiente es " + aux.getLigaN().getDato());
+
+            // verlos en una ventana
+            mensaje += ("\nDATO ANTERIOR: "+
                     aux.getLigaB().getDato() + " DATO: "+aux.getDato() + " y dato siguiente es " + aux.getLigaN().getDato());
             aux = aux.getLigaN();
         }while(aux != cabeza);
+        JOptionPane.showMessageDialog(null,mensaje);
     }
 
     public void recorrerBack(){
+        String mensaje = "";
         Nodo aux = cabeza;
         do{
-            JOptionPane.showMessageDialog(null," DATO ANTERIOR: "+
+            // muestra de a uno
+//            JOptionPane.showMessageDialog(null," DATO ANTERIOR: "+
+//                    aux.getLigaB().getDato() + " DATO: "+aux.getDato() + " y dato siguiente es " + aux.getLigaN().getDato());
+//            //carga para mostrar todos en una
+            mensaje += ("\nDATO ANTERIOR: "+
                     aux.getLigaB().getDato() + " DATO: "+aux.getDato() + " y dato siguiente es " + aux.getLigaN().getDato());
             aux = aux.getLigaB();
         }while(aux != cabeza);
+        JOptionPane.showMessageDialog(null,mensaje);
     }
 
     public void recorrerNextWithdiv(){

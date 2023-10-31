@@ -16,11 +16,13 @@ public class Main {
         }
         // divide los datos
 
-        lista.recorrerNextWithdiv();
+        //lista.recorrerNextWithdiv();
 
         // test the list and links
-        //lista.recorrerNext();
-        //lista.recorrerBack();
+        lista.viewEasy();
+        lista.invertirLista();
+//        lista.recorrerNext();
+//        lista.recorrerBack();
 
 
     }
